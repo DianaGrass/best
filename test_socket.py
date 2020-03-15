@@ -5,8 +5,8 @@ from tabulate import tabulate
 logging.basicConfig(format="%(asctime)s[x]%(levelname)s[X]%(message)s")
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("0.0.0.0", 80)) #35.222.147.83
-# server_socket.bind(("localhost", 5000))
+# server_socket.bind(("0.0.0.0", 80)) #35.222.147.83
+server_socket.bind(("localhost", 5000))
 server_socket.listen()
 
 table = tabulate(
@@ -44,7 +44,8 @@ def sender(client, msg):
 
 while True:
     client, addr = server_socket.accept()
-    logging.warning(f"accept client by addr {addr}")
+    logging.warning("accept client by addr {:}".format(addr))
+    # logging.warning(f"accept client by addr {addr}")
     msg = client.recv(4096)
     request = msg.decode("utf-8").split("\n")
     response = get_response(request)
