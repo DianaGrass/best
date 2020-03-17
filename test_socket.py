@@ -6,7 +6,7 @@ logging.basicConfig(format="%(asctime)s[x]%(levelname)s[X]%(message)s")
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # server_socket.bind(("0.0.0.0", 80)) #35.222.147.83
-server_socket.bind(("localhost", 5000))
+server_socket.bind(("localhost", 8000))
 server_socket.listen()
 
 table = tabulate(
@@ -19,7 +19,8 @@ views = {
     "/main":b"HTTP/1.1 200 OK\n\n" + templates.main,
     # "/main":b"HTTP/1.1 200 OK\n\nHello main page",
     "/shop":b"HTTP/1.1 200 OK\n\nShop page",
-    "/users":("HTTP/1.1 200 OK\n\n" + table).encode("utf-8")
+    "/users":("HTTP/1.1 200 OK\n\n" + table).encode("utf-8"),
+    "/cho":b"HTTP/1.1 200 OK\n\n" + templates.cho,
 }
 
 
