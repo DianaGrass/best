@@ -5,8 +5,9 @@ from tabulate import tabulate
 logging.basicConfig(format="%(asctime)s[x]%(levelname)s[X]%(message)s")
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# server_socket.bind(("0.0.0.0", 80)) #35.222.147.83
-server_socket.bind(("localhost", 8000))
+server_socket.bind(("0.0.0.0", 80)) #35.222.147.83
+# server_socket.bind(("localhost", 8000))
+print(server_socket)
 server_socket.listen()
 
 table = tabulate(
